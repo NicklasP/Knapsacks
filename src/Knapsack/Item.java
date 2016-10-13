@@ -28,7 +28,6 @@ public class Item {
 		this.density =(float)value/weight;
 	}
 	
-	
 	public static Comparator<Item> ItemDensityComparator
     = new Comparator<Item>() {
 
