@@ -1,13 +1,15 @@
 package Knapsack;
+import java.util.Comparator;
 import java.util.Random;
 
-public class Item {
+public class Item implements Comparable<Item>{
 	
 	private int value;
 	private int weight;
 	private Random randomGenerator = new Random();
 	private int itemID;
 	private static int itemIDCounter = 0;
+	private float density = (float) 0.0;
 	
 	//Standard constructor with fields
 	public Item(int value, int weight) {
@@ -15,6 +17,7 @@ public class Item {
 		this.weight = weight;
 		this.itemID = itemIDCounter;
 		itemIDCounter++;
+		this.density =(float)value/weight;
 	}
 	
 	//Random item generator
@@ -23,11 +26,35 @@ public class Item {
 		this.weight = 1 + randomGenerator.nextInt(7);
 		this.itemID = itemIDCounter;
 		itemIDCounter++;
+		this.density =(float)value/weight;
 	}
+	
+	@Override
+	public int compareTo(Item itemIN) {
+		float compareDensity = ((Item) itemIN).getDensity();
+		
+		//acsending order
+		return (int)(this.density - compareDensity);
+	}
+	public static Comparator<Item> ItemDensityComparator
+    = new Comparator<Item>() {
+
+		public int compare(Item item1, Item item2) {
+
+		
+		//ascending order
+		return Float.compare(item1.density,item2.density);
+		
+		//descending order
+		//return fruitName2.compareTo(fruitName1);
+		}
+
+};
+	
 	
 
 	public float getDensity(){
-		return (float)value/weight;
+		return density;
 	}
 	
 	public int getValue() {
@@ -45,6 +72,8 @@ public class Item {
 	public void setWeight(int weight) {
 		this.weight = weight;
 	}
+	
+
 }
 
 

@@ -1,5 +1,6 @@
 package Knapsack;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Random;
 
 public class Main {
@@ -21,9 +22,14 @@ public class Main {
 		for (int i = 0; i <= numberOfItems; i++) {
 			Item item = new Item();			
 			availableItems.add(item);
+			
 		}
-		// Sort availableItems on density or weight?
+		// Sort availableItems on density
+		availableItems.sort(Item.ItemDensityComparator);
 	}
+	
+
+
 
 	private static void showItems() {
 		for (Item item : availableItems){
