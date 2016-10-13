@@ -1,8 +1,7 @@
 package Knapsack;
 import java.util.Comparator;
 import java.util.Random;
-
-public class Item implements Comparable<Item>{
+public class Item {
 	
 	private int value;
 	private int weight;
@@ -29,13 +28,7 @@ public class Item implements Comparable<Item>{
 		this.density =(float)value/weight;
 	}
 	
-	@Override
-	public int compareTo(Item itemIN) {
-		float compareDensity = ((Item) itemIN).getDensity();
-		
-		//acsending order
-		return (int)(this.density - compareDensity);
-	}
+	
 	public static Comparator<Item> ItemDensityComparator
     = new Comparator<Item>() {
 
