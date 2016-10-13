@@ -29,22 +29,17 @@ public class Item {
 	}
 	
 	public static Comparator<Item> ItemDensityComparator
-    = new Comparator<Item>() {
+    	= new Comparator<Item>() {
 
 		public int compare(Item item1, Item item2) {
-
-		
+	
 		//ascending order
 		return Float.compare(item1.density,item2.density);
-		
-		//descending order
-		//return fruitName2.compareTo(fruitName1);
 		}
-
-};
+		
+	};
 	
 	
-
 	public float getDensity(){
 		return density;
 	}
